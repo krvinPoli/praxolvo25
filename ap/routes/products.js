@@ -1,28 +1,20 @@
 const express = require('express');
+const { getProducts, getOneProduct, createProduct, deleteProduct, updateProduct } = require('../controllers/product');
 const router = express.Router();
-let products = [];
 
 // GET /products - Get all products
-router.get('/', (req, res) => {
-    res.status(200).json(products);
-});
+router.get('/', getProducts);
+
+// GET /products/:id - Get one product by ID
+router.get('/:id', getOneProduct);
 
 // POST /products - Create product
-router.post('/', (req, res) => {
-    const { name, descr, price } = req.body;
-    const newProduct = {
-        id: products.length + 1,
-        name,
-        descr,
-        price,
-        creationDate: new Date()
-    };
-    products.push(newProduct);
-    res.status(201).json(newProduct);
-});
+router.post('/', createProduct);
 
-/**
- * Were missing some routes here...
- */
+// DELETE /products/:id - Delet one product by ID
+router.delete('/:id', deleteProduct);
+
+//PUT /products/:id - Update one product by ID
+router.put('/:id', updateProduct);
 
 module.exports = router;
