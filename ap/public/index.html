@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product CRUD</title>
     <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <h1>Product CRUD</h1>
@@ -12,7 +13,9 @@
         <input type="text" id="productName" placeholder="Product Name" required>
         <input type="text" id="productDescr" placeholder="Product Description" required>
         <input type="number" id="productPrice" placeholder="Product Price" required>
-        <button type="submit">Add Product</button>
+        <div class="submit">
+            <button type="submit">Add Product</button>
+        </div>
     </form>
     <table id="productTable">
         <thead>
@@ -27,7 +30,20 @@
             <!-- Products will be added here dynamically -->
         </tbody>
     </table>
-
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Product</h2>
+            <form id="editProductForm">
+                <input type="text" id="editProductName" required>
+                <input type="text" id="editProductDescr" required>
+                <input type="number" id="editProductPrice" required>
+                <div class="submit">
+                    <button type="submit">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script src="index.js" type="text/javascript"></script>
 </body>
 </html>
